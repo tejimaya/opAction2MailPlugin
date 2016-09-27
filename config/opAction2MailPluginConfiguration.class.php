@@ -72,7 +72,8 @@ EOF;
 メッセージに返信するには、こちらをクリックしてください。
 {$url}message
 EOF;
-    if(!$action->getRequestParameter('is_draft')){
+    $isMessageSent = isset($action->message) ? $action->message->is_send : false;
+    if($isMessageSent){
       self::notifyMail($member_to,$message);
     }
   }
